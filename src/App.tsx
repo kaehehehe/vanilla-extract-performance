@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Button, { ButtonType } from "./components/Button";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const buttonCount = 1000;
+  const buttonTypes: ButtonType[] = [
+    "primary",
+    "secondary",
+    "warning",
+    "success",
+  ];
+
+  const buttonElements = Array.from({ length: buttonCount }).map((_, index) => {
+    const randomType =
+      buttonTypes[Math.floor(Math.random() * buttonTypes.length)];
+
+    const label = `${randomType.charAt(0).toUpperCase() + randomType.slice(1)}`;
+
+    const disabled = Math.random() < 0.1;
+
+    const sizes: ("small" | "medium" | "large")[] = [
+      "small",
+      "medium",
+      "large",
+    ];
+    const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+
+    return (
+      <Button
+        key={index}
+        type={randomType}
+        size={randomSize}
+        label={label}
+        disabled={disabled}
+      />
+    );
+  });
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "10px",
+        padding: "20px",
+      }}
+    >
+      {buttonElements}
+    </div>
+  );
 }
 
-export default App
+export default App;
