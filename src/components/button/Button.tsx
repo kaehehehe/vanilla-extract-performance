@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, ReactElement } from "react";
 
 import clsx from "clsx";
-import { Size } from "../types/size";
+import { Size } from "../../types/size";
 import { commonStyle, sizeStyle, typeStyle } from "./Button.css";
 
 export type ButtonType = "primary" | "secondary" | "warning" | "success";

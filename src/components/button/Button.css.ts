@@ -1,6 +1,6 @@
 import { style, styleVariants } from "@vanilla-extract/css";
-import { Typographies } from "../constants/typography";
-import { Colors } from "../constants/colors";
+import { Typographies } from "../../constants/typography";
+import { Colors } from "../../constants/colors";
 
 export const commonStyle = style({
   display: "flex",
